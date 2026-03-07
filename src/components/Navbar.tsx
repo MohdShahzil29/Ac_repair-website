@@ -26,7 +26,7 @@ const Navbar = () => {
           onClick={() => scrollTo("home")}
         >
           <Snowflake className="w-8 h-8 text-primary animate-spin-slow" />
-          <span className="text-xl font-display font-bold text-gradient">ArcticCool</span>
+          <span className="text-xl font-display font-bold text-gradient">2 Minute AC Solution</span>
         </motion.div>
 
         {/* Desktop */}

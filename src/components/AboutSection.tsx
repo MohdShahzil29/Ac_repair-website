@@ -46,7 +46,7 @@ const AboutSection = () => {
           >
             <span className="text-primary font-semibold text-sm uppercase tracking-widest">About Us</span>
             <h2 className="text-4xl md:text-5xl font-display font-bold mt-3 mb-6">
-              Why Choose <span className="text-gradient">ArcticCool</span>?
+              Why Choose <span className="text-gradient">2 Minute AC Solution</span>?
             </h2>
             <p className="text-muted-foreground mb-8 leading-relaxed">
               We combine cutting-edge technology with years of expertise to deliver cooling solutions that are efficient, reliable, and affordable.
