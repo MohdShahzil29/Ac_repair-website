@@ -3,6 +3,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Send, Phone, Mail, MapPin, CheckCircle2 } from "lucide-react";
 import { toast } from "sonner";
+import { saveSubmission } from "@/lib/submissions";
 
 const serviceOptions = [
   "AC Installation",
@@ -17,6 +18,7 @@ const BookingSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -30,14 +32,23 @@ const BookingSection = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name || !form.phone || !form.service || !form.date) {
       toast.error("Please fill in all required fields");
       return;
     }
-    setSubmitted(true);
-    toast.success("Booking request sent! We'll contact you shortly.");
+
+    setIsSubmitting(true);
+    try {
+      await saveSubmission(form);
+      setSubmitted(true);
+      toast.success("Booking saved! We'll contact you shortly.");
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : "Could not submit booking.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -195,12 +206,13 @@ const BookingSection = () => {
 
                 <motion.button
                   type="submit"
-                  whileHover={{ scale: 1.02, boxShadow: "0 0 40px hsl(195 90% 50% / 0.4)" }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full bg-primary text-primary-foreground py-4 rounded-xl font-semibold text-lg flex items-center justify-center gap-2"
+                  disabled={isSubmitting}
+                  whileHover={isSubmitting ? undefined : { scale: 1.02, boxShadow: "0 0 40px hsl(195 90% 50% / 0.4)" }}
+                  whileTap={isSubmitting ? undefined : { scale: 0.98 }}
+                  className="w-full bg-primary text-primary-foreground py-4 rounded-xl font-semibold text-lg flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
                 >
                   <Send className="w-5 h-5" />
-                  Submit Booking
+                  {isSubmitting ? "Submitting..." : "Submit Booking"}
                 </motion.button>
               </form>
             )}

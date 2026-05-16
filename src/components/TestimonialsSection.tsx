@@ -3,7 +3,7 @@ import { useRef } from "react";
 import { Star } from "lucide-react";
 
 const testimonials = [
-  { name: "Rahul Sharma", text: "2 Minute AC Solution installed my split AC in just 2 hours. Extremely professional and clean work!", rating: 5 },
+  { name: "Rahul Sharma", text: "tdacmechanic installed my split AC in just 2 hours. Extremely professional and clean work!", rating: 5 },
   { name: "Priya Patel", text: "Emergency repair at 10 PM and they showed up within 40 minutes. Lifesavers!", rating: 5 },
   { name: "Amit Kumar", text: "Best maintenance service. My AC runs like new after their annual servicing.", rating: 5 },
   { name: "Sneha Reddy", text: "Transparent pricing, no upselling. Highly recommend for any AC work.", rating: 5 },

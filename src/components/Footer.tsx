@@ -5,10 +5,10 @@ const Footer = () => (
     <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
       <div className="flex items-center gap-2">
         <Snowflake className="w-6 h-6 text-primary" />
-        <span className="font-display font-bold text-gradient">2 Minute AC Solution</span>
+        <span className="font-display font-bold text-gradient">tdacmechanic</span>
       </div>
       <div className="text-sm text-muted-foreground text-center">
-        <p>© 2024 2 Minute AC Solution. All rights reserved. | trickshome17@gmail.com</p>
+        <p>© 2024 tdacmechanic. All rights reserved. | trickshome17@gmail.com</p>
         <p>
           Developed and designed by{" "}
           <a
