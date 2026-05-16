@@ -6,6 +6,7 @@
     "node": "20.x"
   },
   "scripts": {
+    "build": "echo build complete",
     "start": "node index.js"
   },
   "dependencies": {
