@@ -23,14 +23,25 @@ const corsOrigins = process.env.CORS_ORIGIN
   : [];
 
 const app = express();
+// app.use(
+//   cors({
+//     origin: (origin, callback) => {
+//       const allowed = !origin || corsOrigins.length === 0 || corsOrigins.includes(origin);
+//       callback(null, allowed);
+//     },
+//   }),
+// );
+
 app.use(
   cors({
-    origin: (origin, callback) => {
-      const allowed = !origin || corsOrigins.length === 0 || corsOrigins.includes(origin);
-      callback(null, allowed);
-    },
-  }),
+    origin: [
+      "https://tdacmechanic.com",
+      "https://www.tdacmechanic.com",
+    ],
+    credentials: true,
+  })
 );
+
 app.use(express.json());
 
 const readBookings = async () => {
